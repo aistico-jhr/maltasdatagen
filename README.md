@@ -9,18 +9,18 @@ Description of the CSV fields:
 1. measurement_id: A unique identifier for each measurement event (may have several rows).
 1. device_id: An identifier for the device on which the measurement was taken.
 1. role_id: An integer identifier for the role involved in the event.
-    0. N/A (not selected)
-    1. Nurse
-    2. Physician
+    0. 0 = N/A (not selected)
+    1. 1 = Nurse
+    2. 2 = Physician
 1. start_time_iso: The ISO-formatted timestamp indicating when an event started.
 1. end_time_iso: The ISO-formatted timestamp indicating when an event ended.
 1. total_time_spent: The total duration of the measurement in seconds.
 1. status: The status of the event.
-    a. "STARTED": The measurement has started.
-    b. "PAUSED": The measurement was temporarily halted.
-    c. "CONTINUED": The measurement resumed after being paused.
-    d. "INTERRUPTED": The measurement was stopped before completion.
-    e. "COMPLETE": The measurement successfully reached completion.
+    * "STARTED": The measurement has started.
+    * "PAUSED": The measurement was temporarily halted.
+    * "CONTINUED": The measurement resumed after being paused.
+    * "INTERRUPTED": The measurement was stopped before completion.
+    * "COMPLETE": The measurement successfully reached completion.
 
 These descriptions should give you a comprehensive understanding of each event recorded in the dataset.
 More status messages (such as "INTERACTED" may be added at later time.
