@@ -6,7 +6,7 @@ The script can be used to generate simulated hand hygiene compiance data for an 
 
 Description of the CSV fields:
 
-1. measurement_id: A unique identifier for each measurement event (may have several rows).
+1. measurement_id: A unique identifier for each measurement (may have several events/rows).
 1. device_id: An identifier for the device on which the measurement was taken.
 1. role_id: An integer identifier for the role involved in the event.
 
@@ -15,14 +15,14 @@ Description of the CSV fields:
     1. 2 = Physician
 
 1. start_time_iso: The ISO-formatted timestamp indicating when an event started.
-1. end_time_iso: The ISO-formatted timestamp indicating when an event ended.
-1. total_time_spent: The total duration of the measurement in seconds.
+1. end_time_iso: The ISO-formatted timestamp indicating when an event ended. Can be equal to start, e.g., for "STARTED" events.
+1. total_time_spent: The total duration of the measurement in seconds. The final result can be read from "INTERRUPTED" and "COMPLETE" events.
 1. status: The status of the event.
     * "STARTED": The measurement has started.
     * "PAUSED": The measurement was temporarily halted.
     * "CONTINUED": The measurement resumed after being paused.
-    * "INTERRUPTED": The measurement was stopped before completion.
-    * "COMPLETE": The measurement successfully reached completion.
+    * "INTERRUPTED": The measurement was stopped before completion. Last event for this measurement.
+    * "COMPLETE": The measurement successfully reached completion. Last event for this measurement.
 
 These descriptions should give you a comprehensive understanding of each event recorded in the dataset.
 More status messages (such as "INTERACTED" may be added at later time.
