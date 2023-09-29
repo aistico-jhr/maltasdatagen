@@ -9,9 +9,11 @@ Description of the CSV fields:
 1. measurement_id: A unique identifier for each measurement event (may have several rows).
 1. device_id: An identifier for the device on which the measurement was taken.
 1. role_id: An integer identifier for the role involved in the event.
-    0. 0 = N/A (not selected)
+
+    1. 0 = N/A (not selected)
     1. 1 = Nurse
-    2. 2 = Physician
+    1. 2 = Physician
+
 1. start_time_iso: The ISO-formatted timestamp indicating when an event started.
 1. end_time_iso: The ISO-formatted timestamp indicating when an event ended.
 1. total_time_spent: The total duration of the measurement in seconds.
