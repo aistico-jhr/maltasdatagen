@@ -164,22 +164,30 @@ def simulate_from(start_date, end_date, functions_with_probabilties, staff_min, 
                     
         current_date += timedelta(days=1)
 
-if __name__=="__main__":
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Simulation Settings")
+    parser.add_argument("--start_date", type=str, default=None, help="Start date in YYYY-MM-DD format")
+    parser.add_argument("--duration", type=int, default=30, help="Duration in days")
+    parser.add_argument("--device_id", type=int, default=1, help="Device ID")
+    
+    args = parser.parse_args()
+    did = args.device_id
+
+    finland_tz = timezone('Europe/Helsinki')
+    start_from = datetime.now(finland_tz) # default
+    if args.start_date:
+        start_from = datetime.strptime(args.start_date, '%Y-%m-%d').replace(tzinfo=finland_tz)
+        
+    end_to = start_from + timedelta(days=args.duration)
+
     probabilities = [
         (0.5, start_and_complete),
         (0.8, start_pause_continue_complete),
         (1.0, start_pause_continue_interrupt)
     ]
-    
-    did = 1
-    if len(argv)>1:
-        did = int(argv[1])
-
-    finland_tz = timezone('Europe/Helsinki')
-    start_from = datetime.now(finland_tz)
-    end_to = start_from+timedelta(days=30)
     simulate_from(start_from, end_to, probabilities, 5, 8, device_id=did)
-    
+
 
 
 

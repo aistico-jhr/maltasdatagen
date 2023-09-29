@@ -1,4 +1,6 @@
-The data fields and their explanations:
+This is a data generator for Maltas measurement device. 
+
+The script can be used to generate simulated hand hygiene compiance data for an operating room for desired time span.
 
 # Fields 
 
@@ -25,21 +27,24 @@ More status messages (such as "INTERACTED" may be added at later time.
 
 The schema for device is not given as it does not yet exist. It would have information of the version, when it was last seen, and who is the customer (and hence users) that are allowed to see the data.
 
-# Generator
+# Use
 
 Call with:
 
 ```console
 $ python datagen.py > data.csv
 ```
+By default this generates one month of data from the current date for device with id 1. One can set arguments (see `--help) to change this default behaviour.
 
-By default the device id is 1, to set is give one argument.
+# Data
 
-```console
-$ python datagen.py 2 > data_room2.csv
-```
+Some sample plots of the sample data.
 
-Both generate one month of data from the current date. Modify the datagen.py to generate different timespans or more data.
+![histogram](sample_histogram.png)
+
+![time series](sample_timeseries.png)
+
+
 
 # Implementation details
 
